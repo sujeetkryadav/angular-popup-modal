@@ -1,20 +1,54 @@
 # AgularPopupModal
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
-## Code scaffolding
 
-Run `ng generate component component-name --project agular-popup-modal` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project agular-popup-modal`.
-> Note: Don't forget to add `--project agular-popup-modal` or else it will be added to the default project in your `angular.json` file. 
+## Angular Versio Support
 
-## Build
+It work for Angular version > 15.
 
-Run `ng build agular-popup-modal` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Publishing
+Run `npm i angular-popup-modal` to add package to your project. 
 
-After building your library with `ng build agular-popup-modal`, go to the dist folder `cd dist/agular-popup-modal` and run `npm publish`.
+## Examples
 
+Step 1:
+Include `import { AngularPopupModalService } from 'angular-popup-modal'` to your popup source component.
+
+Step 2:
+Create a component (ModalComponent) for modal which you will be passing as modal.
+
+Step 3:
+Inject `AngularPopupModalService` to you source component.
+
+```
+import { Component } from '@angular/core';
+import { AngularPopupModalService } from 'angular-popup-modal';
+import { ModalComponent } from './modal.component';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'popup-modal';
+  modalRef: any;
+  constructor(private ams: AngularPopupModalService) { }
+  open() {
+    this.modalRef = this.ams.loadModal(ModalComponent, { title: "Modal", width: "800px", cancelBtnLabel: "close", okBtnLabel: "ok" });
+    this.modalRef.onClose.subscribe((m: any) => {
+      console.log("Close", m);
+      this.ams.close(true);
+    });
+  
+    this.modalRef.onOk.subscribe((m: any) => {
+      console.log("Ok", m)
+      this.ams.close(true);
+    })
+  }
+}
+```
+You can pass data for modal like title, width and buttons text
 ## Running unit tests
 
 Run `ng test agular-popup-modal` to execute the unit tests via [Karma](https://karma-runner.github.io).

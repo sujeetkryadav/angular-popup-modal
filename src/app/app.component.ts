@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularPopupModalService } from 'dist/angular-popup-modal';
+import { AngularPopupModalService } from 'angular-popup-modal';
 import { ModalComponent } from './modal.component';
 @Component({
   selector: 'app-root',
