@@ -49,10 +49,10 @@ export class AppComponent {
 }
 ```
 You can pass data for modal like title, width and buttons text
-## Running unit tests
+## Closing Modal
 
-Run `ng test agular-popup-modal` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To close popup-modal you need to call `close()` method from service `AngularPopupModalService` with boolean value
 
-## Further help
+## How to get data after every action
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+After loading modal, You can subscribe to the modalRef method `onClose`, `onOk` and you will be able to get updated data
