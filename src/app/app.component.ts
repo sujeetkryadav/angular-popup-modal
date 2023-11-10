@@ -16,9 +16,7 @@ export class AppComponent {
       console.log("Close", m);
       this.ams.close(true);
     });
-    // this.modalRef.onCancel.subscribe((m: any) => {
-    //   console.log("Cancel", m)
-    // })
+
     this.modalRef.onOk.subscribe((m: any) => {
       console.log("Ok", m)
       this.ams.close(true);
