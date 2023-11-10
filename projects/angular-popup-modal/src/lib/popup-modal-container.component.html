@@ -1,0 +1,17 @@
+<div class="popup">
+    <div class="popup-container" [ngStyle]="{'max-width':data?.width}">
+        <div class="popup-header">
+            <h5 class="modal-title">{{data?.title}}</h5>
+            <button type="button" class="close" (click)="onCancel($event)">
+                <span>×</span>
+            </button>
+        </div>
+        <div id="angular-popup-modal">
+
+        </div>
+        <div class="popup-footer">
+            <button class="btn-close" (click)="onClose($event)">{{data?.cancelBtnLabel}}</button>
+            <button class="btn-submit" (click)="onOk($event)">{{data?.okBtnLabel}}</button>
+        </div>
+    </div>
+</div>
