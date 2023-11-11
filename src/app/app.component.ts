@@ -11,7 +11,7 @@ export class AppComponent {
   modalRef: any;
   constructor(private ams: AngularPopupModalService) { }
   open() {
-    this.modalRef = this.ams.loadModal(ModalComponent, { title: "Modal", width: "800px", cancelBtnLabel: "close", okBtnLabel: "ok" });
+    this.modalRef = this.ams.loadModal(ModalComponent, { title: "Modal Title", width: "800px", cancelBtnLabel: "Close", okBtnLabel: "ok" });
     this.modalRef.onClose.subscribe((m: any) => {
       console.log("Close", m);
       this.ams.close(true);

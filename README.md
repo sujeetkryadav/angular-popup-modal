@@ -1,27 +1,58 @@
-# PopupModal
+# AgularPopupModal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Angular Version Support
 
-## Code scaffolding
+It work for Angular version > 15.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+Run `npm i angular-popup-modal` to add package to your project. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Examples
 
-## Running unit tests
+Step 1:
+Include `import { AngularPopupModalService } from 'angular-popup-modal'` to your popup source component.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Step 2:
+Create a component (ModalComponent) for modal which you will be passing as modal.
 
-## Running end-to-end tests
+Step 3:
+Inject `AngularPopupModalService` to you source component.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+import { Component } from '@angular/core';
+import { AngularPopupModalService } from 'angular-popup-modal';
+import { ModalComponent } from './modal.component';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'popup-modal';
+  modalRef: any;
+  constructor(private ams: AngularPopupModalService) { }
+  open() {
+    this.modalRef = this.ams.loadModal(ModalComponent, { title: "Modal", width: "800px", cancelBtnLabel: "close", okBtnLabel: "ok" });
+    this.modalRef.onClose.subscribe((m: any) => {
+      console.log("Close", m);
+      this.ams.close(true);
+    });
+  
+    this.modalRef.onOk.subscribe((m: any) => {
+      console.log("Ok", m)
+      this.ams.close(true);
+    })
+  }
+}
+```
+You can pass data for modal like title, width and buttons text
+## Closing Modal
 
-## Further help
+To close popup-modal you need to call `close()` method from service `AngularPopupModalService` with boolean value
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## How to get data after every action
+
+After loading modal, You can subscribe to the modalRef method `onClose`, `onOk` and you will be able to get updated data

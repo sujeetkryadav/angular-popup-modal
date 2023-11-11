@@ -2,7 +2,7 @@
 
 
 
-## Angular Versio Support
+## Angular Version Support
 
 It work for Angular version > 15.
 
