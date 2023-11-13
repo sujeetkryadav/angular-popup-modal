@@ -18,7 +18,7 @@ export class AppComponent {
     });
 
     this.modalRef.onOk.subscribe((m: any) => {
-      console.log("Ok", m)
+      console.log("Ok", m.data)
       this.ams.close(true);
     })
   }

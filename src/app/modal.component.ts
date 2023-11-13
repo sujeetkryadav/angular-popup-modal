@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
     standalone: false,
     template: `<div>
 
-        <input type="text" name="name" [(ngModel)]="name">
-        {{name}}
+             ....
     </div>`
 
 })
